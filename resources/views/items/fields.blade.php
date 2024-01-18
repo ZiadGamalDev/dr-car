@@ -1,14 +1,4 @@
-<div class="d-flex flex-column col-sm-12 col-md-12">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-</div>
+@include('partials.form_errors')
 {{-- @if ($customFields)
     <h5 class="col-12 pb-4">{!! trans('lang.main_fields') !!}</h5>
 @endif --}}
@@ -43,66 +33,15 @@
 </div>
 <div class="d-flex flex-column col-sm-12 col-md-6">
     <!-- Image Field -->
-    {{-- <div class="form-group align-items-start d-flex flex-column flex-md-row">
+    <div class="form-group align-items-start d-flex flex-column flex-md-row">
         {!! Form::label('image', trans('lang.category_image'), ['class' => 'col-md-3 control-label text-md-right mx-1']) !!}
         <div class="col-md-9">
-            <div style="width: 100%" class="dropzone image" id="image" data-field="image">
-                <input type="hidden" name="image">
-            </div>
-            <a href="#loadMediaModal" data-dropzone="image" data-toggle="modal" data-target="#mediaModal"
-                class="btn btn-outline-primary btn-sm float-right mt-1">{{ trans('lang.media_select') }}</a>
+            {!! Form::file('image', ['class' => 'form-control-file']) !!}
             <div class="form-text text-muted w-50">
                 {{ trans('lang.category_image_help') }}
             </div>
         </div>
     </div>
-    @prepend('scripts')
-        <script type="text/javascript">
-            var var16110650672130312723ble = '';
-            @if (isset($item) && $item->image)
-                var16110650672130312723ble = {
-                    name: "{!! $item->getFirstMedia('image')->name !!}",
-                    size: "{!! $item->getFirstMedia('image')->size !!}",
-                    type: "{!! $item->getFirstMedia('image')->mime_type !!}",
-                    collection_name: "{!! $item->getFirstMedia('image')->collection_name !!}"
-                };
-            @endif
-            var dz_var16110650672130312723ble = $(".dropzone.image").dropzone({
-                url: "{!! url('uploads/store') !!}",
-                addRemoveLinks: true,
-                maxFiles: 1,
-                init: function() {
-                    @if (isset($item) && $item->hasMedia('image'))
-                        dzInit(this, var16110650672130312723ble, '{!! url($item->getFirstMediaUrl('image', 'thumb')) !!}')
-                    @endif
-                },
-                accept: function(file, done) {
-                    dzAccept(file, done, this.element, "{!! config('medialibrary.icons_folder') !!}");
-                },
-                sending: function(file, xhr, formData) {
-                    dzSending(this, file, formData, '{!! csrf_token() !!}');
-                },
-                maxfilesexceeded: function(file) {
-                    dz_var16110650672130312723ble[0].mockFile = '';
-                    dzMaxfile(this, file);
-                },
-                complete: function(file) {
-                    dzComplete(this, file, var16110650672130312723ble, dz_var16110650672130312723ble[0].mockFile);
-                    dz_var16110650672130312723ble[0].mockFile = file;
-                },
-                removedfile: function(file) {
-                    dzRemoveFile(
-                        file, var16110650672130312723ble, '{!! url('categories/remove-media') !!}',
-                        'image', '{!! isset($item) ? $item->id : 0 !!}', '{!! url('uplaods/clear') !!}',
-                        '{!! csrf_token() !!}'
-                    );
-                }
-            });
-            dz_var16110650672130312723ble[0].mockFile = var16110650672130312723ble;
-            dropzoneFields['image'] = dz_var16110650672130312723ble;
-        </script>
-    @endprepend --}}
-
 
     <!-- Parent Id Field -->
     <div class="form-group align-items-baseline d-flex flex-column flex-md-row">

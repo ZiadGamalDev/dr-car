@@ -410,8 +410,8 @@
                 {{ trans('lang.earning_plural') }} </p>
         </a>
     </li> --}}
-    {{-- <li class="nav-header">{{ trans('lang.app_setting') }}</li>
-    <li class="nav-item">
+    <li class="nav-header">{{ trans('lang.app_setting') }}</li>
+    {{-- <li class="nav-item">
         <a class="nav-link {{ Request::is('medias*') ? 'active' : '' }}" href="{!! url('medias') !!}">
             @if ($icons)
                 <i class="nav-icon fas fa-photo-video"></i>
@@ -489,6 +489,7 @@
         </ul>
 
     </li>
+    --}}
     <li
         class="nav-item has-treeview {{ (Request::is('settings*') || Request::is('users*')) && !Request::is('settings/mobile*') ? 'menu-open' : '' }}">
         <a href="#"
@@ -498,9 +499,9 @@
             @endif
             <p>{{ trans('lang.app_setting') }} <i class="right fas fa-angle-left"></i>
             </p>
-        </a>
+        </a> 
         <ul class="nav nav-treeview">
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="{!! url('settings/app/globals') !!}"
                     class="nav-link {{ Request::is('settings/app/globals*') ? 'active' : '' }}">
                     @if ($icons)
@@ -508,7 +509,7 @@
                     @endif
                     <p>{{ trans('lang.app_setting_globals') }}</p>
                 </a>
-            </li>
+            </li> --}}
 
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('users*') ? 'active' : '' }}" href="{!! route('users.index') !!}">
@@ -519,6 +520,7 @@
                 </a>
             </li>
 
+            {{-- 
             <li
                 class="nav-item has-treeview {{ Request::is('settings/permissions*') || Request::is('settings/roles*') ? 'menu-open' : '' }}">
                 <a href="#"
@@ -660,6 +662,6 @@
                     <p>{{ trans('lang.app_setting_mail') }}</p>
                 </a>
             </li>
-
+            --}}
         </ul>
-    </li> --}}
+    </li>

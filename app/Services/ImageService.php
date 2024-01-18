@@ -25,10 +25,13 @@ class ImageService
         }
     }
 
-    public function delete($model, $folder = "temp", $file = 'image')
+    
+    public function delete($model, $folder = "temp", $file = 'image', $throw = null)
     {
-        if ($model->$file) {
-            $pathOldImage  = storage_path('app/' . self::PATH . $folder . '/' . $model->$file);
+        // throw: if there is relationship method in between like $user->info()->image
+        $image = $throw ? $model->{$throw}()->$file : $model->$file;
+        if ($image) {
+            $pathOldImage  = storage_path('app/' . self::PATH . $folder . '/' . $image);
             if (File::exists($pathOldImage)) {
                 unlink($pathOldImage);
             }

@@ -47,7 +47,7 @@
                 </ul>
             </div>
             <div class="card-body">
-                {!! Form::model($item, ['route' => ['items.update', $item->id], 'method' => 'patch']) !!}
+                {!! Form::model($item, ['route' => ['items.update', $item->id], 'method' => 'patch', 'files' => true]) !!}
                 <div class="row">
                     @include('items.fields')
                 </div>

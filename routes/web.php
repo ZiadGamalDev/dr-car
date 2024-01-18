@@ -4,6 +4,8 @@ use App\Http\Controllers\Web\ItemController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Web\CategoryController;
+use App\Http\Controllers\Web\ProviderController;
+use App\Http\Controllers\Web\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,8 +34,11 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/', function () {return view('dashboard.index');});
     Route::get('/dashboard', function () {return view('dashboard.index');});
 
+    # Menue
     Route::resource('items', ItemController::class);
     Route::resource('categories', CategoryController::class);
+    Route::resource('eProviders', ProviderController::class);
+    Route::resource('users', UserController::class);
 });
 
 Route::get('bookings', function () {
@@ -67,14 +72,6 @@ Route::get('earnings', function () {
 Route::get('earnings', function () {
     dd('earnings');
 })->name('earnings.index');
-
-Route::get('eProviders', function () {
-    dd('eProviders');
-})->name('eProviders.index');
-
-Route::get('users', function () {
-    dd('users');
-})->name('users.index');
 
 Route::get('user/profile', function () {
     dd('users');

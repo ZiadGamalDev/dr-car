@@ -1374,5 +1374,7 @@ return [
     'item_edit' => 'Edit Item',
     'item_table' => 'Items List',
     'item_create' => 'Create Item',
-
+    'customer' => 'Customer',
+    'winch' => 'Winch',
+    'garage' => 'Garage',
 ];

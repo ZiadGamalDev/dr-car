@@ -48,7 +48,7 @@
                 </ul>
             </div>
             <div class="card-body">
-                {!! Form::open(['route' => 'items.store', 'files' => true, 'enctype' => 'multipart/form-data']) !!}
+                {!! Form::open(['route' => 'items.store', 'files' => true]) !!}
                 <div class="row">
                     @include('items.fields')
                 </div>
